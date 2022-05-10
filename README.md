@@ -1,3 +1,13 @@
+# Docker Usage
+
+![build status](https://github.com/peanutsguy/ble-monitor/actions/workflows/docker-image.yml/badge.svg)
+
+```docker
+docker run -d -v {config_folder}:/app/config --net=host --cap-add=NET_ADMIN --name blemonitor ghcr.io/peanutsguy/ble-monitor
+```
+
+## *Original README follows*
+
 `monitor`
 =======
 ***TL;DR***: Passive Bluetooth presence detection of beacons, cell phones, and other Bluetooth devices. Useful for [mqtt-based](http://mqtt.org) home automation, especially when the script runs on multiple devices, distributed throughout a property. 
