@@ -6,15 +6,16 @@ RUN apt upgrade -y
 RUN apt autoremove -y
 RUN apt install -y git mosquitto mosquitto-clients bluez bluez-hcidump bc bluez dbus sudo
 
-COPY ./bluezuser.conf /etc/dbus-1/system.d/
-RUN useradd -m bluezuser \
- && adduser bluezuser sudo \
- && passwd -d bluezuser
-USER bluezuser
-
 RUN mkdir -p /app && cd /app
 WORKDIR /app
 RUN git clone https://github.com/peanutsguy/ble-monitor.git .
 RUN mkdir /app/config
+
+COPY ./bluezuser.conf /etc/dbus-1/system.d/
+RUN useradd -m bluezuser \
+ && adduser bluezuser sudo \
+ && passwd -d bluezuser
+RUN chown -R bluezuser. /app
+USER bluezuser
 
 CMD ["bash","monitor.sh"]
