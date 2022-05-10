@@ -1,4 +1,5 @@
 FROM debian:buster-slim
+LABEL org.opencontainers.image.source = "https://github.com/peanutsguy/ble-monitor"
 
 RUN apt update
 RUN apt upgrade -y
