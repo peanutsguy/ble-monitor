@@ -53,7 +53,7 @@ should_exit=false
 [[ ! $mosquitto_pub_version =~ (^1.[5-9]{1,}.?|^[2-9].[0-9]{1,}.?) ]] && printf "%s\n" ">${RED} error:${NC} minimum required mosquitto_pub version 1.5+ not found. please update." && should_exit=true
 
 #BASE DIRECTORY REGARDLESS OF INSTALLATION; ELSE MANUALLY SET HERE
-base_directory=$(dirname "$(readlink -f "$0")")
+base_directory=$(dirname "$(readlink -f "$0")")"/config"
 [ ! -z "$PREF_CONFIG_DIR" ] && printf "%s\n" "using $PREF_CONFIG_DIR as config dir" && base_directory="$PREF_CONFIG_DIR"
 
 #SET THE NAME CACHE IF IT DOESN'T EXIST
